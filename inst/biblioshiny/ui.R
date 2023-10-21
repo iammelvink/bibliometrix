@@ -4179,8 +4179,8 @@ body <- dashboardBody(
                                 grid = TRUE,
                                 force_edges = TRUE,
                                 width = "70%",
-                                choices = seq(5,15),
-                                selected = "7"
+                                choices = seq(4,15),
+                                selected = "4"
                               )
               ), column(6
                         ### To insert settings for default path, etc.
