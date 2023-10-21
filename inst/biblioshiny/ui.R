@@ -4170,7 +4170,7 @@ body <- dashboardBody(
                                 force_edges = TRUE,
                                 choices = c("75", "150", "300", "600"),
                                 width = "70%",
-                                selected = "300"
+                                selected = "600"
                               ),
                               br(),
                               sliderTextInput(

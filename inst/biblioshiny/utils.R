@@ -31,7 +31,7 @@ strSynPreview <- function(string){
 }
 
 # from igraph to png file
-igraph2PNG <- function(x, filename, width = 10, height = 7, dpi=75){
+igraph2PNG <- function(x, filename, width = 10, height = 7, dpi=150){
   V(x)$centr <- centr_betw(x)$res
   df <- data.frame(name=V(x)$label,cluster=V(x)$color, centr=V(x)$centr) %>% 
     group_by(.data$cluster) %>% 
@@ -1840,7 +1840,7 @@ addDataScreenWb <- function(list_df, wb, sheetname){
   return(results)
 }
 
-addGgplotsWb <- function(list_plot, wb, sheetname, col, width=10, height=7, dpi=75){
+addGgplotsWb <- function(list_plot, wb, sheetname, col, width=10, height=7, dpi=150){
   l <- length(list_plot)
   startRow <- 1
   for (i in 1:l){
@@ -1856,7 +1856,7 @@ addGgplotsWb <- function(list_plot, wb, sheetname, col, width=10, height=7, dpi=
     if (inherits(list_plot[[i]], "bibliodendrogram")){
       #print("dendrogram plot")
       # 1. Open jpeg file
-      png(filename = fileName, width = width, height = height, res=300, units="in")
+      png(filename = fileName, width = width, height = height, res=600, units="in")
       # 2. Create the plot
       plot(list_plot[[i]])
       # 3. Close the file
@@ -1920,7 +1920,7 @@ plot2png <- function(p, filename, zoom = 2, type="vis", tmpdir){
   webshot2::webshot(url = html_name, zoom = zoom, file = filename)#, verbose=FALSE)
 }
 
-addScreenWb <- function(df, wb, width=14, height=8, dpi=75){
+addScreenWb <- function(df, wb, width=14, height=8, dpi=150){
   names(df) <- c("sheet","file","n")
   if (nrow(df)>0){
     sheet <- unique(df$sheet)
@@ -1941,7 +1941,7 @@ addScreenWb <- function(df, wb, width=14, height=8, dpi=75){
   return(wb)
 }
 
-addSheetToReport <- function(list_df, list_plot, sheetname, wb, dpi=75){
+addSheetToReport <- function(list_df, list_plot, sheetname, wb, dpi=150){
   ind <- which(regexpr(sheetname,wb$sheet_names)>-1)
   if (length(ind)>0){
     sheetname <- paste(sheetname,"(",length(ind)+1,")",sep="")

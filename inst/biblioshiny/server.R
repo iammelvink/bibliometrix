@@ -54,7 +54,7 @@ To ensure the functionality of Biblioshiny,
   values$logoGrid <- grid::rasterGrob(logo,interpolate = TRUE)
   
   ### setting values
-  values$dpi <- 300
+  values$dpi <- 600
   values$h <- 7
   #values$w <- 14 
   values$path <- paste(getwd(),"/", sep="")
@@ -3967,7 +3967,7 @@ To ensure the functionality of Biblioshiny,
       list_plot <- list(values$degreePlot)
       res <- addDataScreenWb(list_df, wb=values$wb, sheetname=sheetname)
       #values$wb <- res$wb
-      values$wb <- addGgplotsWb(list_plot, wb=res$wb, sheetname, col=res$col+16, width=10, height=7, dpi=75)
+      values$wb <- addGgplotsWb(list_plot, wb=res$wb, sheetname, col=res$col+16, width=10, height=7, dpi=150)
       #values$fileTFP <- screenSh(selector = "#cocPlot") ## screenshot
       values$fileCOC <- screenSh(values$COCnetwork$VIS, zoom = 2, type="vis")
       values$list_file <- rbind(values$list_file, c(sheetname=res$sheetname,values$fileCOC,res$col))
@@ -5081,7 +5081,7 @@ To ensure the functionality of Biblioshiny,
       list_plot <- list(values$degreePlot)
       res <- addDataScreenWb(list_df, wb=values$wb, sheetname=sheetname)
       #values$wb <- res$wb
-      values$wb <- addGgplotsWb(list_plot, wb=res$wb, sheetname, col=res$col+15, width=12, height=8, dpi=75)
+      values$wb <- addGgplotsWb(list_plot, wb=res$wb, sheetname, col=res$col+15, width=12, height=8, dpi=150)
       #values$fileTFP <- screenSh(selector = "#cocitPlot") ## screenshot
       values$fileCOCIT <- screenSh(values$COCITnetwork$VIS, zoom = 2, type="vis")
       values$list_file <- rbind(values$list_file, c(sheetname=res$sheetname,values$fileCOCIT,res$col))
@@ -5262,7 +5262,7 @@ To ensure the functionality of Biblioshiny,
       list_df <- list(values$colnet$params, values$colnet$cluster_res)
       list_plot <- list(values$degreePlot)
       res <- addDataScreenWb(list_df, wb=values$wb, sheetname=sheetname)
-      values$wb <- addGgplotsWb(list_plot, wb=res$wb, sheetname, col=res$col+15, width=12, height=8, dpi=75)
+      values$wb <- addGgplotsWb(list_plot, wb=res$wb, sheetname, col=res$col+15, width=12, height=8, dpi=150)
       #values$fileTFP <- screenSh(selector = "#colPlot") ## screenshot
       values$fileCOL <- screenSh(values$COLnetwork$VIS, zoom = 2, type="vis")
       values$list_file <- rbind(values$list_file, c(sheetname=res$sheetname,values$fileCOL,res$col))
@@ -5346,7 +5346,7 @@ To ensure the functionality of Biblioshiny,
     content <- function(file) {
       wb_export <- copyWorkbook(values$wb)
       if (nrow(values$list_file)>0){
-        wb_export <- addScreenWb(df=values$list_file, wb=wb_export)#, width=10, height=7, dpi=300)
+        wb_export <- addScreenWb(df=values$list_file, wb=wb_export)#, width=10, height=7, dpi=600)
       }
       sheetToRemove <- setdiff(sheets(wb_export),input$reportSheets)
       if (length(sheetToRemove)>0) for (i in sheetToRemove) removeWorksheet(wb_export,i)
